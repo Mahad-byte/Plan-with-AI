@@ -5,6 +5,19 @@ from starlette.responses import JSONResponse
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware  # Add this import
+
+app = FastAPI()
+
+# Add CORS configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For testing, restrict in production
+    allow_credentials=True,
+    allow_methods=["POST"],  # Critical!
+    allow_headers=["*"],
+)
+
 @app.post("/webhook", response_model=None)
 async def webhook(request: Request):
     try:
