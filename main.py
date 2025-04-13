@@ -40,3 +40,9 @@ def read_root():
 @app.get("/favicon.ico")
 async def ignore_favicon():
     return JSONResponse(status_code=204)
+
+if __name__ == "__main__":
+    import uvicorn
+    import os
+    port = int(os.environ.get("PORT", 8080))  # Critical for Railway
+    uvicorn.run(app, host="0.0.0.0", port=port)
