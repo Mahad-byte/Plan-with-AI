@@ -36,3 +36,7 @@ async def webhook(request: Request):
 @app.get("/")
 def read_root():
     return {"message": "FastAPI server is running!"}
+
+@app.get("/favicon.ico")
+async def ignore_favicon():
+    return JSONResponse(status_code=204)
