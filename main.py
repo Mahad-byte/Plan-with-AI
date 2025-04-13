@@ -18,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post("/webhook", response_model=None)
+@app.post("/webhook")
 async def webhook(request: Request):
     try:
         # Parse the JSON payload from Dialogflow
